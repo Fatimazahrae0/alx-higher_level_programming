@@ -6,5 +6,5 @@ for i in range(100):
         separator = ", "
     else:
         separator = "\n"
-    
+
     print("{:02d}{}".format(i, separator), end="")
