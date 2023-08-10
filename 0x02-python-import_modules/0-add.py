@@ -1,4 +1,4 @@
-#!/user/bin/python3
+#!/usr/bin/python3
 if __name__ == "__main__":
     """ sum of two decimal number """
 from add_0 import add
