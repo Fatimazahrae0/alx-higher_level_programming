@@ -10,6 +10,6 @@ if __name__ == "__main__":
         else:
             print("{} arguments:".format(len(sys.argv) - 1))
             i = 0
-            while i < len(sys.argv) - 1:
-                print("{}: {}".format(i + 1, sys.argv[i + 1]))
-                i += 1
+        while i < len(sys.argv) - 1:
+            print("{}: {}".format(i + 1, sys.argv[i + 1]))
+            i += 1
