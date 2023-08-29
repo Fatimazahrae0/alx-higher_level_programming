@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 """
-class square
+this module define class call square
 """
 
 
