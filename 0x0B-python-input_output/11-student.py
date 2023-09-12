@@ -1,24 +1,22 @@
 #!/usr/bin/python3
-"""
-    12-pascal_triangle: pascal_triangle()
-"""
+'''
+Write a class Student that defines a student by
+'''
 
 
-def pascal_triangle(n):
-    """
-        returns a lis of lists of integers
-        Args:
-            n (int): number of lists and digits
-        Returns: list of lists
-    """
-    t_row = [1]
-    temp_l = [0]
-    pTri = []
+class Student:
 
-    if n <= 0:
-        return pTri
+    def __init__(self, first_name, last_name, age):
+        '''
+        Constructor
+        '''
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
 
-    for i in range(n):
-        pTri.append(t_row)
-        t_row = [l+r for l, r in zip(t_row + temp_l, temp_l + t_row)]
-    return pTri
+    def to_json(self):
+        '''
+        Retrieves a dictionary representation
+        of a Student instance
+        '''
+        return vars(self)
