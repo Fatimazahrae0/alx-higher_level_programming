@@ -1,65 +1,58 @@
-# Checking docstring for module
->>> __import__('1-my_list').__doc__ is not None
+The ``1-my_list`` module
+======================
+
+Using ``my_list``
+-------------------
+Checking docstring for module:
+>>> __import__('1-my_list').__doc__ != None
 True
 
-# Importing the MyList class
 >>> MyList = __import__('1-my_list').MyList
 
-# Checking if the docstring for MyList class is not empty
 >>> len(MyList.__doc__) > 0
 True
 
-# Checking an empty MyList instance
+checking empty object
 >>> my_list = MyList()
 >>> print(my_list)
 []
-
-# Testing the print_sorted method on an empty MyList
 >>> my_list.print_sorted()
 []
 
-# Creating a MyList instance with 3 elements
+checking an instance my_list with 3 elements
 >>> my_list = MyList()
 >>> my_list.append(1)
 >>> my_list.append(4)
 >>> my_list.append(2)
 >>> print(my_list)
 [1, 4, 2]
-
-# Testing the print_sorted method on a MyList with 3 elements
 >>> my_list.print_sorted()
 [1, 2, 4]
 
-# Creating a MyList instance with 3 equal elements
+checking an instance my_list with 3 elements equales
 >>> my_list = MyList()
 >>> my_list.append(2)
 >>> my_list.append(2)
 >>> my_list.append(2)
 >>> print(my_list)
 [2, 2, 2]
-
-# Testing the print_sorted method on a MyList with 3 equal elements
 >>> my_list.print_sorted()
 [2, 2, 2]
 
-# Creating a MyList instance with 1 element
+checking an instance my_list with 1 elements
 >>> my_list = MyList()
 >>> my_list.append(1)
 >>> print(my_list)
 [1]
-
-# Testing the print_sorted method on a MyList with 1 element
 >>> my_list.print_sorted()
 [1]
 
-# Creating a MyList instance with negative elements
+checking negative elements
 >>> my_list = MyList()
 >>> my_list.append(-2)
 >>> my_list.append(-12)
 >>> my_list.append(-5)
 >>> print(my_list)
 [-2, -12, -5]
-
-# Testing the print_sorted method on a MyList with negative elements
 >>> my_list.print_sorted()
 [-12, -5, -2]

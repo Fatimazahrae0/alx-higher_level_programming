@@ -1,9 +1,13 @@
 #!/usr/bin/python3
-"""inhertate my list"""
+
+'''
+module call rectangle
+'''
 
 
 class MyList(list):
+    '''
+    return all attricute and function in object
+    '''
     def print_sorted(self):
-        """Print the list in ascending order."""
-        sorted_list = sorted(self)
-        print(sorted_list)
+        print(sorted(self))
