@@ -1,0 +1,3 @@
+--remove all the records with a score <= 5 in the table.
+DELETE `second_table`
+WHERE `score` <= 5
