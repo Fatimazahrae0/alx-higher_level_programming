@@ -1,2 +1,3 @@
 -- delete a databass
-DELETE DATABASE IF EXISTS hbtn_0c_0;
+-- DOESNT FAIL
+DROP DATABASE IF EXISTS hbtn_0c_0;
