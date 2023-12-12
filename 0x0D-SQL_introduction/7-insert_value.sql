@@ -1,4 +1,4 @@
 --insert a new row in the TABLE
 -- id = 89
 -- name = Best School
-INSERT INTO `first_table` (`id`, `name`) VALUES (2, "Best School");
+INSERT INTO `first_table`(`id`, `name`) VALUES (2, 'Best School');
