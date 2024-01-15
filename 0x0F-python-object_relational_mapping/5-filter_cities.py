@@ -1,25 +1,30 @@
 #!/usr/bin/python3
-"""takes in the name of a state as an argument and lists all cities of that
-state, using the database hbtn_0e_4_usa
+"""states models
 """
-import sys
-import MySQLdb
-
 if __name__ == "__main__":
-    db = MySQLdb.connect(host="localhost",
-                         user=sys.argv[1],
-                         passwd=sys.argv[2],
-                         db=sys.argv[3],
-                         port=3306)
-    c = db.cursor()
-    c.execute("""SELECT cities.name FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE states.name LIKE %s
-    ORDER BY cities.id ASC""", (sys.argv[4],))
-    result = c.fetchall()
-    res_len = len(result)
-    for i in range(res_len):
-        if i < res_len - 1:
-            print(result[i][0], end=", ")
-        else:
-            print(result[i][0])
+    import MySQLdb
+    import sys
+
+    db_host = "localhost"
+    db_user = sys.argv[1]  # "your_username"
+    db_password = sys.argv[2]  # "your_password"
+    db_name = sys.argv[3]  # "your_database_name"
+    port = 3306
+    state_name = sys.argv[4]  # "your_database_name"
+    query = "SELECT name FROM cities WHERE state_id = \
+(SELECT id FROM states WHERE name LIKE BINARY %s) ORDER BY cities.id ASC"
+    params = (state_name,)
+    db = MySQLdb.connect(
+        host=db_host, user=db_user, passwd=db_password, db=db_name, port=port
+    )
+    cursor = db.cursor()
+
+    cursor.execute(query, params)
+    rows = cursor.fetchall()
+    tuples = ()
+    for row in rows:
+        tuples += row
+    print(*tuples, sep=", ")
+
+    cursor.close()
+    db.close()
