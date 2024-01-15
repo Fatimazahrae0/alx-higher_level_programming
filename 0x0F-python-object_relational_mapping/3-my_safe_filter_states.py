@@ -1,26 +1,27 @@
 #!/usr/bin/python3
-'''
-script that takes in an argument and displays all values in the states
-'''
-
+"""
+my_safe_filter_states
+"""
 import MySQLdb
 import sys
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
         user=sys.argv[1],
         passwd=sys.argv[2],
         db=sys.argv[3],
-        port=3306,
-        host='localhost')
+    )
 
-    cursor = db.cursor()
-    cursor.execute('SELECT * from states WHERE name = %s ORDER BY states.id',
-                   (sys.argv[4], ))
-
-    states = cursor.fetchall()
-    for state in states:
-        print(state)
-
-    cursor.close()
+    cur = db.cursor()
+    cur.execute(
+        """SELECT * FROM states WHERE name=%s
+            ORDER BY states.id ASC""",
+        (sys.argv[4],),
+    )
+    rows = cur.fetchall()
+    for row in rows:
+        print(row)
+    cur.close()
     db.close()
