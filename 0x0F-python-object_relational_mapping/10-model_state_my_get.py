@@ -1,23 +1,20 @@
 #!/usr/bin/python3
+""" prints the State object with the name passed as argument from the database
 """
-List all State objects with a
-"""
-if __name__ == "__main__":
-    import sys
-    from model_state import Base, State
-    from sqlalchemy import create_engine, func
-    from sqlalchemy.orm import sessionmaker
+import sys
+from model_state import Base, State
+from sqlalchemy import (create_engine)
+from sqlalchemy.orm import sessionmaker
 
-    mysql = 'mysql+mysqldb://{}:{}@localhost:3306/{}'.format(sys.argv[1],
-                                                             sys.argv[2],
-                                                             sys.argv[3])
-    engine = create_engine(mysql)
+
+if __name__ == "__main__":
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
+                           .format(sys.argv[1], sys.argv[2], sys.argv[3]))
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    item = session.query(State).filter(
-        State.name == func.binary(sys.argv[4])).first()
-    if item is not None:
-        print("{:d}".format(item.id))
-    else:
+    instance = session.query(State).filter(State.name == (sys.argv[4],))
+    try:
+        print(instance[0].id)
+    except IndexError:
         print("Not found")
